@@ -1,4 +1,4 @@
-# Riley Pigneguy Portfolio
+# Portfolio site
 
 This is a static portfolio website built with plain HTML, CSS, and JavaScript.
 
