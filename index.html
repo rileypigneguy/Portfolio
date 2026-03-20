@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#05070a" />
+    <meta
+      name="description"
+      content="Portfolio site for Riley Pigneguy, a UWA Advanced Computer Science student building practical software with Python, Next.js, React, APIs, and databases."
+    />
+    <title>Riley Pigneguy | Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="page-glow page-glow-left" aria-hidden="true"></div>
+    <div class="page-glow page-glow-right" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="wordmark" href="#hero">RILEY_PIGNEGUY</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#projects">Projects</a>
+          <a href="#journey">Journey</a>
+          <a href="#stack">Stack</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              System status: building useful things
+            </p>
+            <h1>Riley <span>Pigneguy</span></h1>
+            <p class="hero-text">
+              Third-year Bachelor of Advanced Computer Science (Honours)
+              student at UWA, building practical software across data tools,
+              APIs, and full-stack apps.
+            </p>
+
+            <div class="hero-facts" aria-label="Quick facts">
+              <div class="fact-card">
+                <span class="fact-label">Location</span>
+                <strong>Perth, Australia</strong>
+              </div>
+              <div class="fact-card">
+                <span class="fact-label">Started</span>
+                <strong>2024</strong>
+              </div>
+              <div class="fact-card">
+                <span class="fact-label">Current stage</span>
+                <strong>Year 3, Semester 1</strong>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#projects"
+                >View projects</a
+              >
+              <a class="button button-secondary" href="#contact">Get in touch</a>
+            </div>
+          </div>
+
+          <aside class="terminal-card reveal">
+            <div class="terminal-topbar">
+              <div class="terminal-lights" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <p>student.profile.ts</p>
+            </div>
+            <div class="terminal-body">
+              <div class="code-line">
+                <span class="line-number">01</span>
+                <code><span class="code-keyword">const</span> riley = {</code>
+              </div>
+              <div class="code-line">
+                <span class="line-number">02</span>
+                <code>name: <span class="code-string">"Riley Pigneguy"</span>,</code>
+              </div>
+              <div class="code-line">
+                <span class="line-number">03</span>
+                <code
+                  >degree:
+                  <span class="code-string"
+                    >"Bachelor of Advanced Computer Science (Honours)"</span
+                  >,</code
+                >
+              </div>
+              <div class="code-line">
+                <span class="line-number">04</span>
+                <code
+                  >university:
+                  <span class="code-string"
+                    >"The University of Western Australia"</span
+                  >,</code
+                >
+              </div>
+              <div class="code-line">
+                <span class="line-number">05</span>
+                <code>yearLevel: <span class="code-string">"3rd year"</span>,</code>
+              </div>
+              <div class="code-line">
+                <span class="line-number">06</span>
+                <code
+                  >focus: [<span class="code-string">"data tools"</span>,
+                  <span class="code-string">"APIs"</span>,
+                  <span class="code-string">"full-stack apps"</span>],</code
+                >
+              </div>
+              <div class="code-line">
+                <span class="line-number">07</span>
+                <code>location: <span class="code-string">"Perth, Australia"</span></code>
+              </div>
+              <div class="code-line">
+                <span class="line-number">08</span>
+                <code>};</code>
+              </div>
+            </div>
+
+            <div class="terminal-panels">
+              <div class="status-panel">
+                <span class="panel-label">Current focus</span>
+                <strong>Projects, product thinking, and shipped tools</strong>
+              </div>
+              <div class="status-panel">
+                <span class="panel-label">Active now</span>
+                <strong>
+                  Custom internship in Semester 1 2026 with UWA Geology
+                </strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker">Repository archive</p>
+            <div class="section-heading-row">
+              <div>
+                <h2>Selected projects</h2>
+                <p class="section-description">
+                  Hover over each project image to cycle through screenshots.
+                </p>
+              </div>
+              <p class="small-note">2025 builds + current beta work</p>
+            </div>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card reveal" data-carousel>
+              <div class="project-media">
+                <div class="carousel-frame">
+                  <img
+                    class="carousel-slide is-active"
+                    src="Assets/networthtracker1beta.png"
+                    alt="Net worth tracker beta screenshot showing the dashboard"
+                  />
+                  <img
+                    class="carousel-slide"
+                    src="Assets/networthtracker2beta.png"
+                    alt="Net worth tracker beta screenshot showing another screen"
+                  />
+                  <img
+                    class="carousel-slide"
+                    src="Assets/networthtracker3beta.png"
+                    alt="Net worth tracker beta screenshot showing a third feature"
+                  />
+                </div>
+                <div class="project-media-meta">
+                  <span>In beta</span>
+                  <span>Current build</span>
+                </div>
+                <div class="carousel-dots" aria-label="Net worth tracker screenshots">
+                  <button class="carousel-dot is-active" type="button" aria-label="Show net worth tracker screenshot 1"></button>
+                  <button class="carousel-dot" type="button" aria-label="Show net worth tracker screenshot 2"></button>
+                  <button class="carousel-dot" type="button" aria-label="Show net worth tracker screenshot 3"></button>
+                </div>
+              </div>
+
+              <div class="project-content">
+                <div class="project-heading">
+                  <h3>Networth Tracker</h3>
+                  <span class="project-tag">Beta</span>
+                </div>
+                <p>
+                  A beta finance dashboard for tracking assets and net worth
+                  over time, built with Next.js, React, PostgreSQL, and Massive API
+                  data integrations.
+                </p>
+                <ul class="tech-list" aria-label="Networth Tracker tech stack">
+                  <li>Next.js</li>
+                  <li>React</li>
+                  <li>PostgreSQL</li>
+                  <li>Massive API</li>
+                </ul>
+                <div class="project-links">
+                  <span class="project-note">Private beta</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-carousel>
+              <div class="project-media">
+                <div class="carousel-frame">
+                  <img
+                    class="carousel-slide is-active"
+                    src="Assets/graphfm1.png"
+                    alt="Graph.fm screenshot showing a genre analysis dashboard"
+                  />
+                  <img
+                    class="carousel-slide"
+                    src="Assets/graphfm2.png"
+                    alt="Graph.fm screenshot showing another analytics view"
+                  />
+                  <img
+                    class="carousel-slide"
+                    src="Assets/graphfm3.png"
+                    alt="Graph.fm screenshot showing a third listening analysis screen"
+                  />
+                </div>
+                <div class="project-media-meta">
+                  <span>2025</span>
+                  <span>Live project</span>
+                </div>
+                <div class="carousel-dots" aria-label="Graph.fm screenshots">
+                  <button class="carousel-dot is-active" type="button" aria-label="Show Graph.fm screenshot 1"></button>
+                  <button class="carousel-dot" type="button" aria-label="Show Graph.fm screenshot 2"></button>
+                  <button class="carousel-dot" type="button" aria-label="Show Graph.fm screenshot 3"></button>
+                </div>
+              </div>
+
+              <div class="project-content">
+                <div class="project-heading">
+                  <h3>Graph.fm</h3>
+                  <span class="project-tag">Last.fm analysis</span>
+                </div>
+                <p>
+                  A Last.fm analysis website that turns listening history into
+                  interactive summaries, comparisons, and visual breakdowns
+                  using Python, Streamlit, and the Last.fm API.
+                </p>
+                <ul class="tech-list" aria-label="Graph.fm tech stack">
+                  <li>Python</li>
+                  <li>Streamlit</li>
+                  <li>Last.fm API</li>
+                </ul>
+                <div class="project-links">
+                  <a href="https://graphfm.streamlit.app/" target="_blank" rel="noreferrer"
+                    >Open live site</a
+                  >
+                  <a href="https://github.com/rileypigneguy/graph.fm" target="_blank" rel="noreferrer"
+                    >View GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-carousel>
+              <div class="project-media">
+                <div class="carousel-frame carousel-frame-discord">
+                  <img
+                    class="carousel-slide is-active"
+                    src="Assets/discordbot1.png"
+                    alt="Discord bot screenshot showing odds output in a Discord channel"
+                  />
+                  <img
+                    class="carousel-slide"
+                    src="Assets/discordbot2.png"
+                    alt="Discord bot screenshot showing another odds summary"
+                  />
+                </div>
+                <div class="project-media-meta">
+                  <span>2024-2025</span>
+                  <span>Discord bot</span>
+                </div>
+                <div class="carousel-dots" aria-label="Discord bot screenshots">
+                  <button class="carousel-dot is-active" type="button" aria-label="Show Discord bot screenshot 1"></button>
+                  <button class="carousel-dot" type="button" aria-label="Show Discord bot screenshot 2"></button>
+                </div>
+              </div>
+
+              <div class="project-content">
+                <div class="project-heading">
+                  <h3>Arb + Oddscreener Bot</h3>
+                  <span class="project-tag">Automation</span>
+                </div>
+                <p>
+                  A Discord bot that pulls sports market data, screens odds
+                  across bookmakers, and posts match-ready summaries straight
+                  into Discord channels for faster decision making.
+                </p>
+                <ul class="tech-list" aria-label="Discord bot tech stack">
+                  <li>Python</li>
+                  <li>Sports API</li>
+                  <li>Discord API</li>
+                </ul>
+                <div class="project-links">
+                  <span class="project-note">Private project</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-carousel>
+              <div class="project-media">
+                <div class="carousel-frame">
+                  <img
+                    class="carousel-slide is-active"
+                    src="Assets/gradestracker1.png"
+                    alt="Grade tracker screenshot showing a grade summary interface"
+                  />
+                  <img
+                    class="carousel-slide"
+                    src="Assets/gradestracker2.png"
+                    alt="Grade tracker screenshot showing another page"
+                  />
+                  <img
+                    class="carousel-slide"
+                    src="Assets/gradestracker3.png"
+                    alt="Grade tracker screenshot showing an additional workflow"
+                  />
+                </div>
+                <div class="project-media-meta">
+                  <span>S1 2025</span>
+                  <span>Group project</span>
+                </div>
+                <div class="carousel-dots" aria-label="Grade tracker screenshots">
+                  <button class="carousel-dot is-active" type="button" aria-label="Show grade tracker screenshot 1"></button>
+                  <button class="carousel-dot" type="button" aria-label="Show grade tracker screenshot 2"></button>
+                  <button class="carousel-dot" type="button" aria-label="Show grade tracker screenshot 3"></button>
+                </div>
+              </div>
+
+              <div class="project-content">
+                <div class="project-heading">
+                  <h3>Grade Tracker</h3>
+                  <span class="project-tag">CITS3403</span>
+                </div>
+                <p>
+                  A university group project for CITS3403 focused on tracking
+                  assessment results and semester progress through a classic web
+                  app stack with Flask and SQLite.
+                </p>
+                <ul class="tech-list" aria-label="Grade Tracker tech stack">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Flask</li>
+                  <li>SQLite</li>
+                </ul>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/alyshaprompruek/CITS3403_project"
+                    target="_blank"
+                    rel="noreferrer"
+                    >View GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="journey">
+        <div class="container journey-grid">
+          <div class="journey-intro reveal">
+            <p class="section-kicker">Academic path</p>
+            <h2>Degree, timeline, and current internship</h2>
+            <p class="section-description">
+              I started at UWA in 2024 and I’m currently in third year,
+              semester 1. My degree focuses on advanced software development,
+              research thinking, and pathways across areas like AI, computing
+              and data science, cybersecurity, and quantum computing.
+            </p>
+
+            <a
+              class="inline-link"
+              href="https://www.uwa.edu.au/study/courses/bachelor-of-advanced-computer-science"
+              target="_blank"
+              rel="noreferrer"
+              >View the UWA course page</a
+            >
+
+            <div class="journey-cards">
+              <article class="info-card">
+                <span class="panel-label">Degree</span>
+                <h3>Bachelor of Advanced Computer Science (Honours)</h3>
+                <p>The University of Western Australia</p>
+              </article>
+
+              <article class="info-card highlight-card">
+                <span class="panel-label">Current internship</span>
+                <h3>Semester 1 2026</h3>
+                <p>
+                  Development of systemised systems via GitBook to support
+                  project development in the UWA Geology department.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="timeline reveal">
+            <article class="timeline-item current">
+              <span class="timeline-date">2026 / current</span>
+              <h3>Third year, Semester 1</h3>
+              <p>
+                Continuing the honours degree while completing a custom
+                internship at UWA focused on clearer systems, documentation, and
+                project development support through GitBook workflows.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <span class="timeline-date">2025</span>
+              <h3>Project-heavy year</h3>
+              <p>
+                Built Graph.fm, worked on the CITS3403 Grade Tracker group
+                project, and continued building API-connected software with real
+                interfaces and data.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <span class="timeline-date">2024</span>
+              <h3>Started at UWA</h3>
+              <p>
+                Began the Bachelor of Advanced Computer Science (Honours) and
+                started building the foundation in programming, software
+                engineering, and systems thinking that now shapes my work.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="stack">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker">System capabilities</p>
+            <h2>Tools I build with</h2>
+          </div>
+
+          <div class="stack-grid">
+            <article class="stack-card reveal">
+              <div class="stack-heading">
+                <span class="stack-index">01</span>
+                <h3>Core stack</h3>
+              </div>
+              <ul class="stack-list">
+                <li>Python</li>
+                <li>Next.js</li>
+                <li>React</li>
+                <li>JavaScript</li>
+                <li>HTML + CSS</li>
+                <li>Streamlit</li>
+                <li>Flask</li>
+                <li>PostgreSQL</li>
+                <li>SQLite</li>
+              </ul>
+            </article>
+
+            <article class="stack-card reveal">
+              <div class="stack-heading">
+                <span class="stack-index">02</span>
+                <h3>Infra + tooling</h3>
+              </div>
+              <ul class="stack-list">
+                <li>GitHub</li>
+                <li>Neon DB</li>
+                <li>Replit</li>
+                <li>Resend</li>
+                <li>Last.fm API</li>
+                <li>Sports API</li>
+                <li>Discord API</li>
+                <li>GitBook workflows</li>
+              </ul>
+            </article>
+
+            <article class="stack-card reveal">
+              <div class="stack-heading">
+                <span class="stack-index">03</span>
+                <h3>University foundations</h3>
+              </div>
+              <p class="stack-copy">
+                Learned through university and still part of my technical base,
+                even where they have not yet featured in my shipped projects.
+              </p>
+              <ul class="stack-list compact">
+                <li>Java</li>
+                <li>C</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container contact-shell reveal">
+          <div class="contact-header">
+            <p class="section-kicker">Connect portal</p>
+            <h2>Contact</h2>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-card">
+              <span class="panel-label">Email</span>
+              <a class="contact-link" href="mailto:riley.pigneguy@gmail.com"
+                >riley.pigneguy@gmail.com</a
+              >
+            </div>
+
+            <div class="contact-card">
+              <span class="panel-label">GitHub</span>
+              <a class="contact-link" href="https://github.com/rileypigneguy" target="_blank" rel="noreferrer"
+                >github.com/rileypigneguy</a
+              >
+            </div>
+
+            <div class="contact-card">
+              <span class="panel-label">Location</span>
+              <p class="contact-link static-text">Perth, Australia</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="current-year">2026</span> Riley Pigneguy</p>
+      </div>
+    </footer>
+  </body>
+</html>
