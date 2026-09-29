@@ -1,0 +1,13 @@
+{
+  // Deploy from this folder with `npx wrangler deploy`.
+  // The Resend key is a secret, never a var: `npx wrangler secret put RESEND_API_KEY`.
+  "name": "riley-portfolio-contact",
+  "main": "./src/index.js",
+  "compatibility_date": "2026-09-17",
+  "vars": {
+    // Pages allowed to use the form: the live site plus the local preview server.
+    "ALLOWED_ORIGINS": "https://rileypigneguy.github.io,http://localhost:4173,http://127.0.0.1:4173",
+    "RESEND_TO_EMAIL": "riley.pigneguy@gmail.com",
+    "RESEND_FROM_EMAIL": "Riley Pigneguy Portfolio <onboarding@resend.dev>"
+  }
+}

@@ -3,549 +3,800 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#05070a" />
+    <meta name="theme-color" content="#050814" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta
       name="description"
       content="Portfolio site for Riley Pigneguy, a UWA Advanced Computer Science student majoring in Artificial Intelligence and building practical software with Python, Next.js, React, APIs, and databases."
     />
-    <title>Riley Pigneguy | Portfolio</title>
+    <title>Riley Pigneguy | Artificial Intelligence Portfolio</title>
+    <link rel="canonical" href="https://rileypigneguy.github.io/Portfolio/" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Riley Pigneguy | Artificial Intelligence Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio site for Riley Pigneguy, a UWA Advanced Computer Science student majoring in Artificial Intelligence and building practical software with Python, Next.js, React, APIs, and databases."
+    />
+    <meta
+      property="og:url"
+      content="https://rileypigneguy.github.io/Portfolio/"
+    />
+    <meta property="og:site_name" content="Riley Pigneguy Portfolio" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Riley Pigneguy | Artificial Intelligence Portfolio"
+    />
+    <meta
+      name="twitter:description"
+      content="UWA Advanced Computer Science student majoring in Artificial Intelligence and building practical software."
+    />
+    <script>
+      // Pick the experience before first paint: the live story, or a still one for reduced motion.
+      (function () {
+        var root = document.documentElement;
+        var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        root.classList.add("js", still ? "is-still" : "is-live");
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Riley Pigneguy",
+        "url": "https://rileypigneguy.github.io/Portfolio/",
+        "jobTitle": "Artificial Intelligence student and software developer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Perth",
+          "addressCountry": "AU"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "The University of Western Australia"
+        },
+        "sameAs": ["https://github.com/rileypigneguy"],
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Python",
+          "Next.js",
+          "React",
+          "PostgreSQL",
+          "APIs"
+        ]
+      }
+    </script>
     <script defer src="script.js"></script>
   </head>
   <body>
-    <div class="page-glow page-glow-left" aria-hidden="true"></div>
-    <div class="page-glow page-glow-right" aria-hidden="true"></div>
-    <div class="grid-overlay" aria-hidden="true"></div>
+    <canvas class="field" id="field" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
 
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="wordmark" href="#hero">RILEY_PIGNEGUY</a>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="#projects">Projects</a>
-          <a href="#journey">Journey</a>
-          <a href="#stack">Stack</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
+    <a class="skip-link" href="#output">Skip to contact</a>
 
-    <main>
-      <section class="hero section" id="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy reveal">
-            <p class="eyebrow">
-              <span class="eyebrow-dot"></span>
-              System status: building useful things
+    <a class="mark" href="#top" aria-label="Riley Pigneguy, back to the start">
+      <span class="mark-dot" aria-hidden="true"></span>
+      <span class="mark-name">Riley Pigneguy</span>
+    </a>
+
+    <div class="corner">
+      <p class="clock">
+        <span class="clock-dot" aria-hidden="true"></span>
+        Perth <time data-perth-time>now</time>
+      </p>
+      <a class="say-hi" href="#output">Say hi</a>
+    </div>
+
+    <nav class="meter" aria-label="Story layers">
+      <ol class="meter-steps">
+        <li><a href="#input" data-meter="0"><span class="visually-hidden">Layer 0: Input</span></a></li>
+        <li><a href="#hidden" data-meter="1"><span class="visually-hidden">Layer 1: Hidden</span></a></li>
+        <li><a href="#builds" data-meter="2"><span class="visually-hidden">Layer 2: Activations</span></a></li>
+        <li><a href="#weights" data-meter="3"><span class="visually-hidden">Layer 3: Weights</span></a></li>
+        <li><a href="#lab" data-meter="4"><span class="visually-hidden">Layer 4: Your turn</span></a></li>
+        <li><a href="#output" data-meter="5"><span class="visually-hidden">Layer 5: Output</span></a></li>
+      </ol>
+      <p class="meter-label" aria-hidden="true">
+        <span class="meter-index" data-meter-index>··</span>
+        <span class="meter-name" data-meter-name>Incoming signal</span>
+      </p>
+    </nav>
+
+    <main class="story-root">
+      <!-- Cold open: one neuron, three lines, then the signal fires into the page. -->
+      <section class="intro" id="top" data-palette="intro" aria-label="Introduction">
+        <span class="anchor-alias" id="hero" aria-hidden="true"></span>
+        <div class="intro-stage">
+          <div class="intro-beats">
+            <p class="beat" data-beat="0">Hi. You’ve just intercepted a <em>signal.</em></p>
+            <p class="beat" data-beat="1">
+              It’s coming from Perth, Western Australia, where it’s
+              <time data-perth-time>evening</time> right now.
             </p>
-            <h1>Riley <span>Pigneguy</span></h1>
-            <p class="hero-text">
-              Third-year Bachelor of Advanced Computer Science (Honours)
-              student at UWA, majoring in Artificial Intelligence and building
-              practical software across data tools, APIs, and full-stack apps.
+            <div class="beat beat-name" data-beat="2">
+              <h1 class="name">
+                <span class="name-first">Riley</span>
+                <span class="name-last">Pigneguy</span>
+              </h1>
+              <p class="name-sub">
+                AI student at UWA. I build software that makes it out into the
+                world.
+              </p>
+            </div>
+          </div>
+          <div class="neuron" aria-hidden="true">
+            <span class="neuron-axon"></span>
+            <span class="neuron-ring"></span>
+            <span class="neuron-ring"></span>
+            <span class="neuron-core"></span>
+          </div>
+          <p class="intro-cue">
+            <span class="intro-cue-line" aria-hidden="true"></span>
+            Scroll to follow it
+          </p>
+        </div>
+        <span class="seed" data-node data-ports="1" aria-hidden="true"></span>
+      </section>
+
+      <!-- Layer 0 · Input -->
+      <section class="chapter" id="input" data-palette="input" aria-labelledby="input-title">
+        <p class="layer-tag" data-node><span>Layer 0</span> Input</p>
+        <h2 class="story" id="input-title" data-node data-read>
+          Every network starts with its <em>inputs.</em> Here are mine.
+        </h2>
+
+        <ul class="inputs" data-node data-ports="children">
+          <li class="input">
+            <span class="input-key">Location</span>
+            <span class="input-value">Perth, Western Australia</span>
+          </li>
+          <li class="input">
+            <span class="input-key">University</span>
+            <span class="input-value">UWA, since 2024</span>
+          </li>
+          <li class="input">
+            <span class="input-key">Degree</span>
+            <span class="input-value">Advanced Computer Science (Honours)</span>
+          </li>
+          <li class="input">
+            <span class="input-key">Major</span>
+            <span class="input-value">Artificial Intelligence</span>
+          </li>
+          <li class="input">
+            <span class="input-key">Right now</span>
+            <span class="input-value">Year 3, Semester 2</span>
+          </li>
+        </ul>
+
+        <div class="terminal" data-node data-ports="3">
+          <div class="terminal-bar">
+            <span class="terminal-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+            <p>riley@perth: ~</p>
+            <span class="terminal-note">or query the inputs yourself</span>
+          </div>
+          <div class="terminal-log" role="log" aria-live="polite" aria-label="Terminal output" tabindex="0">
+            <p class="term-line term-cmd"><span class="term-prompt">riley@perth:~$</span> whoami</p>
+            <p class="term-line">Riley Pigneguy</p>
+            <p class="term-line">Bachelor of Advanced Computer Science (Honours) · UWA</p>
+            <p class="term-line">Major: Artificial Intelligence · Year 3, Semester 2</p>
+            <p class="term-line">Based in Perth, Western Australia</p>
+          </div>
+          <form class="terminal-form" autocomplete="off">
+            <label class="term-prompt" for="terminal-input">riley@perth:~$</label>
+            <input
+              class="terminal-input"
+              id="terminal-input"
+              type="text"
+              spellcheck="false"
+              autocapitalize="off"
+              placeholder="type a command, or tap one below"
+            />
+          </form>
+          <div class="terminal-chips" aria-label="Suggested commands">
+            <button type="button" data-cmd="whoami">whoami</button>
+            <button type="button" data-cmd="now">now</button>
+            <button type="button" data-cmd="ls builds">ls builds</button>
+            <button type="button" data-cmd="experience">experience</button>
+            <button type="button" data-cmd="stack">stack</button>
+            <button type="button" data-cmd="contact">contact</button>
+            <button type="button" data-cmd="help">help</button>
+          </div>
+        </div>
+
+        <p class="hook" data-node data-read>
+          Inputs are only half the story. The interesting part happens in the
+          <em>hidden layers.</em>
+        </p>
+      </section>
+
+      <!-- Layer 1 · Hidden -->
+      <section class="chapter" id="hidden" data-palette="hidden" aria-labelledby="hidden-title">
+        <span class="anchor-alias" id="journey" aria-hidden="true"></span>
+        <p class="layer-tag" data-node><span>Layer 1</span> Hidden</p>
+        <h2 class="story" id="hidden-title" data-node data-read>
+          Three years of <em>training.</em> Each one changed the weights.
+        </h2>
+
+        <article class="epoch is-left" data-node data-ports="4" aria-labelledby="epoch-2024">
+          <div class="epoch-year" aria-hidden="true">
+            <span class="year-outline">2024</span><span class="year-fill">2024</span>
+          </div>
+          <div class="epoch-body">
+            <p class="epoch-label">Epoch 01 · Initialising</p>
+            <h3 id="epoch-2024">Started at UWA</h3>
+            <p>
+              I began the Bachelor of Advanced Computer Science (Honours) and
+              built the foundations: programming, software engineering, and
+              systems thinking. Java and C came from here. So did a Discord bot
+              that screens sports odds, which I kept building into 2025.
             </p>
-
-            <div class="hero-facts" aria-label="Quick facts">
-              <div class="fact-card">
-                <span class="fact-label">Location</span>
-                <strong>Perth, Australia</strong>
-              </div>
-              <div class="fact-card">
-                <span class="fact-label">Started</span>
-                <strong>2024</strong>
-              </div>
-              <div class="fact-card">
-                <span class="fact-label">Current stage</span>
-                <strong>Year 3, Semester 1</strong>
-              </div>
-            </div>
-
-            <div class="hero-actions">
-              <a class="button button-primary" href="#projects"
-                >View projects</a
-              >
-              <a class="button button-secondary" href="#contact">Get in touch</a>
-            </div>
           </div>
+        </article>
 
-          <aside class="terminal-card reveal">
-            <div class="terminal-topbar">
-              <div class="terminal-lights" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <p>student.profile.ts</p>
-            </div>
-            <div class="terminal-body">
-              <div class="code-line">
-                <span class="line-number">01</span>
-                <code><span class="code-keyword">const</span> riley = {</code>
-              </div>
-              <div class="code-line">
-                <span class="line-number">02</span>
-                <code>name: <span class="code-string">"Riley Pigneguy"</span>,</code>
-              </div>
-              <div class="code-line">
-                <span class="line-number">03</span>
-                <code
-                  >degree:
-                  <span class="code-string"
-                    >"Bachelor of Advanced Computer Science (Honours)"</span
-                  >,</code
-                >
-              </div>
-              <div class="code-line">
-                <span class="line-number">04</span>
-                <code
-                  >university:
-                  <span class="code-string"
-                    >"The University of Western Australia"</span
-                  >,</code
-                >
-              </div>
-              <div class="code-line">
-                <span class="line-number">05</span>
-                <code>major: <span class="code-string">"Artificial Intelligence"</span>,</code>
-              </div>
-              <div class="code-line">
-                <span class="line-number">06</span>
-                <code>yearLevel: <span class="code-string">"3rd year"</span>,</code>
-              </div>
-              <div class="code-line">
-                <span class="line-number">07</span>
-                <code
-                  >focus: [<span class="code-string">"data tools"</span>,
-                  <span class="code-string">"APIs"</span>,
-                  <span class="code-string">"full-stack apps"</span>],</code
-                >
-              </div>
-              <div class="code-line">
-                <span class="line-number">08</span>
-                <code>location: <span class="code-string">"Perth, Australia"</span></code>
-              </div>
-              <div class="code-line">
-                <span class="line-number">09</span>
-                <code>};</code>
-              </div>
-            </div>
-
-            <div class="terminal-panels">
-              <div class="status-panel">
-                <span class="panel-label">Active now</span>
-                <strong>
-                  Custom internship in Semester 1 2026 with UWA CMCA
-                </strong>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="section" id="projects">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="section-kicker">Repository archive</p>
-            <div class="section-heading-row">
-              <div>
-                <h2>Selected projects</h2>
-                <p class="section-description">
-                  Hover over each project image to cycle through screenshots.
-                </p>
-              </div>
-              <p class="small-note">2024-2025 builds + current beta work</p>
-            </div>
+        <article class="epoch is-right" data-node data-ports="4" aria-labelledby="epoch-2025">
+          <div class="epoch-year" aria-hidden="true">
+            <span class="year-outline">2025</span><span class="year-fill">2025</span>
           </div>
-
-          <div class="projects-grid">
-            <article class="project-card reveal" data-carousel>
-              <div class="project-media">
-                <div class="carousel-frame">
-                  <img
-                    class="carousel-slide is-active"
-                    src="Assets/networthtracker1beta.png"
-                    alt="Net worth tracker beta screenshot showing the dashboard"
-                  />
-                  <img
-                    class="carousel-slide"
-                    src="Assets/networthtracker2beta.png"
-                    alt="Net worth tracker beta screenshot showing another screen"
-                  />
-                  <img
-                    class="carousel-slide"
-                    src="Assets/networthtracker3beta.png"
-                    alt="Net worth tracker beta screenshot showing a third feature"
-                  />
-                </div>
-                <div class="project-media-meta">
-                  <span>In beta</span>
-                  <span>Current build</span>
-                </div>
-                <div class="carousel-dots" aria-label="Net worth tracker screenshots">
-                  <button class="carousel-dot is-active" type="button" aria-label="Show net worth tracker screenshot 1"></button>
-                  <button class="carousel-dot" type="button" aria-label="Show net worth tracker screenshot 2"></button>
-                  <button class="carousel-dot" type="button" aria-label="Show net worth tracker screenshot 3"></button>
-                </div>
-              </div>
-
-              <div class="project-content">
-                <div class="project-heading">
-                  <h3>Networth Tracker</h3>
-                  <span class="project-tag">Beta</span>
-                </div>
-                <p>
-                  A beta finance dashboard for tracking assets and net worth
-                  over time, built with Next.js, React, PostgreSQL, and Massive API
-                  data integrations.
-                </p>
-                <ul class="tech-list" aria-label="Networth Tracker tech stack">
-                  <li>Next.js</li>
-                  <li>React</li>
-                  <li>PostgreSQL</li>
-                  <li>Massive API</li>
-                </ul>
-                <div class="project-links">
-                  <span class="project-note">Private beta</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-card reveal" data-carousel>
-              <div class="project-media">
-                <div class="carousel-frame">
-                  <img
-                    class="carousel-slide is-active"
-                    src="Assets/graphfm1.png"
-                    alt="Graph.fm screenshot showing a genre analysis dashboard"
-                  />
-                  <img
-                    class="carousel-slide"
-                    src="Assets/graphfm2.png"
-                    alt="Graph.fm screenshot showing another analytics view"
-                  />
-                  <img
-                    class="carousel-slide"
-                    src="Assets/graphfm3.png"
-                    alt="Graph.fm screenshot showing a third listening analysis screen"
-                  />
-                </div>
-                <div class="project-media-meta">
-                  <span>2025</span>
-                  <span>Live project</span>
-                </div>
-                <div class="carousel-dots" aria-label="Graph.fm screenshots">
-                  <button class="carousel-dot is-active" type="button" aria-label="Show Graph.fm screenshot 1"></button>
-                  <button class="carousel-dot" type="button" aria-label="Show Graph.fm screenshot 2"></button>
-                  <button class="carousel-dot" type="button" aria-label="Show Graph.fm screenshot 3"></button>
-                </div>
-              </div>
-
-              <div class="project-content">
-                <div class="project-heading">
-                  <h3>Graph.fm</h3>
-                  <span class="project-tag">Last.fm analysis</span>
-                </div>
-                <p>
-                  A Last.fm analysis website that turns listening history into
-                  interactive summaries, comparisons, and visual breakdowns
-                  using Python, Streamlit, and the Last.fm API.
-                </p>
-                <ul class="tech-list" aria-label="Graph.fm tech stack">
-                  <li>Python</li>
-                  <li>Streamlit</li>
-                  <li>Last.fm API</li>
-                </ul>
-                <div class="project-links">
-                  <a href="https://github.com/rileypigneguy/graph.fm" target="_blank" rel="noreferrer"
-                    >View GitHub</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <article class="project-card reveal" data-carousel>
-              <div class="project-media">
-                <div class="carousel-frame carousel-frame-discord">
-                  <img
-                    class="carousel-slide is-active"
-                    src="Assets/discordbot1.png"
-                    alt="Discord bot screenshot showing odds output in a Discord channel"
-                  />
-                  <img
-                    class="carousel-slide"
-                    src="Assets/discordbot2.png"
-                    alt="Discord bot screenshot showing another odds summary"
-                  />
-                </div>
-                <div class="project-media-meta">
-                  <span>2024-2025</span>
-                  <span>Discord bot</span>
-                </div>
-                <div class="carousel-dots" aria-label="Discord bot screenshots">
-                  <button class="carousel-dot is-active" type="button" aria-label="Show Discord bot screenshot 1"></button>
-                  <button class="carousel-dot" type="button" aria-label="Show Discord bot screenshot 2"></button>
-                </div>
-              </div>
-
-              <div class="project-content">
-                <div class="project-heading">
-                  <h3>Arb + Oddscreener Bot</h3>
-                  <span class="project-tag">Automation</span>
-                </div>
-                <p>
-                  A Discord bot that pulls sports market data, screens odds
-                  across bookmakers, and posts match-ready summaries straight
-                  into Discord channels for faster decision making.
-                </p>
-                <ul class="tech-list" aria-label="Discord bot tech stack">
-                  <li>Python</li>
-                  <li>Sports API</li>
-                  <li>Discord API</li>
-                </ul>
-                <div class="project-links">
-                  <span class="project-note">Private project</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-card reveal" data-carousel>
-              <div class="project-media">
-                <div class="carousel-frame">
-                  <img
-                    class="carousel-slide is-active"
-                    src="Assets/gradestracker1.png"
-                    alt="Grade tracker screenshot showing a grade summary interface"
-                  />
-                  <img
-                    class="carousel-slide"
-                    src="Assets/gradestracker2.png"
-                    alt="Grade tracker screenshot showing another page"
-                  />
-                  <img
-                    class="carousel-slide"
-                    src="Assets/gradestracker3.png"
-                    alt="Grade tracker screenshot showing an additional workflow"
-                  />
-                </div>
-                <div class="project-media-meta">
-                  <span>S1 2025</span>
-                  <span>Group project</span>
-                </div>
-                <div class="carousel-dots" aria-label="Grade tracker screenshots">
-                  <button class="carousel-dot is-active" type="button" aria-label="Show grade tracker screenshot 1"></button>
-                  <button class="carousel-dot" type="button" aria-label="Show grade tracker screenshot 2"></button>
-                  <button class="carousel-dot" type="button" aria-label="Show grade tracker screenshot 3"></button>
-                </div>
-              </div>
-
-              <div class="project-content">
-                <div class="project-heading">
-                  <h3>Grade Tracker</h3>
-                  <span class="project-tag">CITS3403</span>
-                </div>
-                <p>
-                  A university group project for CITS3403 focused on tracking
-                  assessment results and semester progress through a classic web
-                  app stack with Flask and SQLite.
-                </p>
-                <ul class="tech-list" aria-label="Grade Tracker tech stack">
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>JavaScript</li>
-                  <li>Flask</li>
-                  <li>SQLite</li>
-                </ul>
-                <div class="project-links">
-                  <a
-                    href="https://github.com/alyshaprompruek/CITS3403_project"
-                    target="_blank"
-                    rel="noreferrer"
-                    >View GitHub</a
-                  >
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="journey">
-        <div class="container journey-grid">
-          <div class="journey-intro reveal">
-            <p class="section-kicker">Academic path</p>
-            <h2>Degree, timeline, and current internship</h2>
-            <p class="section-description">
-              I started at UWA in 2024 and I’m currently in third year,
-              semester 1. My major is in Artificial Intelligence, within a
-              degree focused on advanced software development, research
-              thinking, and pathways across areas like AI, computing and data
-              science, cybersecurity, and quantum computing.
+          <div class="epoch-body">
+            <p class="epoch-label">Epoch 02 · Training</p>
+            <h3 id="epoch-2025">A project-heavy year</h3>
+            <p>
+              I built Graph.fm, worked on the CITS3403 Grade Tracker group
+              project, and kept building API-connected software with real
+              interfaces and real data.
             </p>
+          </div>
+        </article>
 
-            <a
-              class="inline-link"
-              href="https://www.uwa.edu.au/study/courses/bachelor-of-advanced-computer-science"
-              target="_blank"
-              rel="noreferrer"
-              >View the UWA course page</a
-            >
-
-            <div class="journey-cards">
-              <article class="info-card">
-                <span class="panel-label">Degree</span>
-                <h3>Bachelor of Advanced Computer Science (Honours)</h3>
-                <p>The University of Western Australia · Major in Artificial Intelligence</p>
-              </article>
-
-              <article class="info-card highlight-card">
-                <span class="panel-label">Current internship</span>
-                <h3>Semester 1 2026</h3>
+        <article class="epoch is-left is-now" data-node data-ports="4" aria-labelledby="epoch-2026">
+          <div class="epoch-year" aria-hidden="true">
+            <span class="year-outline">2026</span><span class="year-fill">2026</span>
+          </div>
+          <div class="epoch-body">
+            <p class="epoch-label">Epoch 03 · Fine-tuning <span class="now-badge">Now</span></p>
+            <h3 id="epoch-2026">Third year</h3>
+            <div class="semesters">
+              <div class="semester semester-role">
+                <p class="semester-label">Semester 1 · Internship</p>
+                <h4 class="role-title">ICT Intern – Systems, Data and Infrastructure</h4>
+                <p class="role-meta">Uplyft · Winter 2026</p>
+                <ul class="role-points">
+                  <li>
+                    Automated ICT support, onboarding and admin workflows with
+                    Power Automate, Microsoft Forms and SharePoint.
+                  </li>
+                  <li>
+                    Helped review security maturity against the Essential Eight,
+                    NIST CSF 2.0, ISO 27001 and SMB1001, and audited physical
+                    access across WA sites.
+                  </li>
+                  <li>
+                    Created security training, help articles and Microsoft 365
+                    guides for staff.
+                  </li>
+                  <li>
+                    Supported asset management and device rollouts across offices.
+                  </li>
+                </ul>
+              </div>
+              <div class="semester">
+                <p class="semester-label">Semester 2 · Shipping</p>
                 <p>
-                  Development of systemised systems via GitBook to support
-                  project development with UWA CMCA, Centre for Microscopy,
-                  Characterisation and Analysis.
+                  Two live sites shipped so far, and a net worth tracker in
+                  private beta.
                 </p>
-              </article>
+              </div>
+              <div class="semester is-pending">
+                <p class="semester-label">
+                  Semester 2 · Internship <span class="pending-badge">Pending</span>
+                </p>
+                <p>
+                  A custom internship with UWA CMCA, the Centre for Microscopy,
+                  Characterisation and Analysis, building clearer systems and
+                  documentation in GitBook to support project development.
+                </p>
+              </div>
             </div>
           </div>
+        </article>
 
-          <div class="timeline reveal">
-            <article class="timeline-item current">
-              <span class="timeline-date">2026 / current</span>
-              <h3>Third year, Semester 1</h3>
-              <p>
-                Continuing the honours degree while completing a custom
-                internship with UWA CMCA focused on clearer systems,
-                documentation, and project development support through GitBook
-                workflows.
-              </p>
-            </article>
-
-            <article class="timeline-item">
-              <span class="timeline-date">2025</span>
-              <h3>Project-heavy year</h3>
-              <p>
-                Built Graph.fm, worked on the CITS3403 Grade Tracker group
-                project, and continued building API-connected software with real
-                interfaces and data.
-              </p>
-            </article>
-
-            <article class="timeline-item">
-              <span class="timeline-date">2024</span>
-              <h3>Started at UWA</h3>
-              <p>
-                Began the Bachelor of Advanced Computer Science (Honours) and
-                started building the foundation in programming, software
-                engineering, and systems thinking that now shapes my work.
-              </p>
-            </article>
-          </div>
-        </div>
+        <p class="hook" data-node data-read>
+          Training only matters if it produces something. Here’s what came out
+          the <em>other side.</em>
+        </p>
       </section>
 
-      <section class="section" id="stack">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="section-kicker">System capabilities</p>
-            <h2>Tools I build with</h2>
+      <!-- Layer 2 · Activations -->
+      <section class="chapter" id="builds" data-palette="builds" aria-labelledby="builds-title">
+        <span class="anchor-alias" id="projects" aria-hidden="true"></span>
+        <p class="layer-tag" data-node><span>Layer 2</span> Activations</p>
+        <h2 class="story" id="builds-title" data-node data-read>
+          Six things this network has <em>produced.</em> Two of them are live
+          right now.
+        </h2>
+
+        <p class="group-label is-live-group" data-node>
+          <span class="group-dot" aria-hidden="true"></span> Live on the internet
+        </p>
+
+        <article class="build" data-node data-ports="3" aria-labelledby="build-1">
+          <div class="build-media">
+            <div class="frame" data-carousel>
+              <div class="frame-bar">
+                <span class="frame-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="frame-url">thesoundsculptor.com.au</span>
+                <div class="slide-dots" aria-label="The Sound Sculptor screenshots">
+                  <button class="slide-dot is-active" type="button" aria-label="Show screenshot 1"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 2"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 3"></button>
+                </div>
+                <span class="frame-status is-live">Live</span>
+              </div>
+              <div class="frame-screen">
+                <img class="slide is-active" src="Assets/optimized/soundsculptor1.jpg" width="1600" height="872" alt="The Sound Sculptor homepage showing the classroom music resources hero" loading="lazy" />
+                <img class="slide" src="Assets/optimized/soundsculptor2.jpg" width="1600" height="872" alt="The Sound Sculptor complete classroom suite with bundle checkout" loading="lazy" />
+                <img class="slide" src="Assets/optimized/soundsculptor3.jpg" width="1600" height="872" alt="The Sound Sculptor individual resources with audio demos and pricing" loading="lazy" />
+              </div>
+            </div>
           </div>
-
-          <div class="stack-grid">
-            <article class="stack-card reveal">
-              <div class="stack-heading">
-                <span class="stack-index">01</span>
-                <h3>Core stack</h3>
-              </div>
-              <ul class="stack-list">
-                <li>Python</li>
-                <li>Next.js</li>
-                <li>React</li>
-                <li>JavaScript</li>
-                <li>HTML + CSS</li>
-                <li>Streamlit</li>
-                <li>Flask</li>
-                <li>PostgreSQL</li>
-                <li>SQLite</li>
-              </ul>
-            </article>
-
-            <article class="stack-card reveal">
-              <div class="stack-heading">
-                <span class="stack-index">02</span>
-                <h3>Infra + tooling</h3>
-              </div>
-              <ul class="stack-list">
-                <li>GitHub</li>
-                <li>Neon DB</li>
-                <li>Replit</li>
-                <li>Resend</li>
-                <li>Last.fm API</li>
-                <li>Sports API</li>
-                <li>Discord API</li>
-                <li>GitBook workflows</li>
-              </ul>
-            </article>
-
-            <article class="stack-card reveal">
-              <div class="stack-heading">
-                <span class="stack-index">03</span>
-                <h3>University foundations</h3>
-              </div>
-              <p class="stack-copy">
-                Learned through university and still part of my technical base,
-                even where they have not yet featured in my shipped projects.
-              </p>
-              <ul class="stack-list compact">
-                <li>Java</li>
-                <li>C</li>
-              </ul>
-            </article>
+          <div class="build-copy">
+            <p class="build-kicker"><span class="build-num">01</span> 2026 · E-commerce</p>
+            <h3 class="build-title" id="build-1">The Sound Sculptor</h3>
+            <p class="build-desc">
+              A storefront for junior primary classroom music resources, with
+              audio demos, Stripe checkout, digital downloads, and download
+              recovery for returning customers.
+            </p>
+            <ul class="chips" aria-label="The Sound Sculptor tech stack">
+              <li>Stripe</li>
+              <li>Cloudflare</li>
+            </ul>
+            <div class="build-actions">
+              <a class="action" href="https://thesoundsculptor.com.au/" target="_blank" rel="noreferrer">
+                Visit the live site <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <article class="build is-flip" data-node data-ports="3" aria-labelledby="build-2">
+          <div class="build-media">
+            <div class="frame" data-carousel>
+              <div class="frame-bar">
+                <span class="frame-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="frame-url">michaelpigneguy.com</span>
+                <div class="slide-dots" aria-label="Michael Pignéguy website screenshots">
+                  <button class="slide-dot is-active" type="button" aria-label="Show screenshot 1"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 2"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 3"></button>
+                </div>
+                <span class="frame-status is-live">Live</span>
+              </div>
+              <div class="frame-screen">
+                <img class="slide is-active" src="Assets/optimized/michaelpigneguy1.jpg" width="1600" height="872" alt="Michael Pignéguy website hero with a live performance photo" loading="lazy" />
+                <img class="slide" src="Assets/optimized/michaelpigneguy2.jpg" width="1600" height="872" alt="Michael Pignéguy website section featuring The Awakenings Ensemble" loading="lazy" />
+                <img class="slide" src="Assets/optimized/michaelpigneguy3.jpg" width="1600" height="872" alt="Michael Pignéguy website albums and releases section" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="build-copy">
+            <p class="build-kicker"><span class="build-num">02</span> 2026 · Artist site</p>
+            <h3 class="build-title" id="build-2">Michael Pignéguy</h3>
+            <p class="build-desc">
+              An official site for a Perth composer and drummer, covering
+              projects, albums, videos, and press, with a mailing list signup
+              and a booking enquiry form for tours and festivals.
+            </p>
+            <ul class="chips" aria-label="Michael Pignéguy website tech stack">
+              <li>Vite</li>
+              <li>Vercel</li>
+              <li>Resend</li>
+            </ul>
+            <div class="build-actions">
+              <button class="action action-live" type="button" data-live-preview="https://michaelpigneguy.com/">
+                <span class="action-pulse" aria-hidden="true"></span> Try it live, right here
+              </button>
+              <a class="action action-quiet" href="https://michaelpigneguy.com/" target="_blank" rel="noreferrer">
+                Open in a new tab <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <p class="group-label" data-node>
+          <span class="group-dot" aria-hidden="true"></span> Still in training
+        </p>
+
+        <article class="build" data-node data-ports="3" aria-labelledby="build-3">
+          <div class="build-media">
+            <div class="frame" data-carousel>
+              <div class="frame-bar">
+                <span class="frame-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="frame-url">networth-tracker</span>
+                <div class="slide-dots" aria-label="Net worth tracker screenshots">
+                  <button class="slide-dot is-active" type="button" aria-label="Show screenshot 1"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 2"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 3"></button>
+                </div>
+                <span class="frame-status">Private beta</span>
+              </div>
+              <div class="frame-screen">
+                <img class="slide is-active" src="Assets/optimized/networthtracker1beta.jpg" width="1600" height="872" alt="Net worth tracker beta screenshot showing the dashboard" loading="lazy" />
+                <img class="slide" src="Assets/optimized/networthtracker2beta.jpg" width="1600" height="872" alt="Net worth tracker beta screenshot showing another screen" loading="lazy" />
+                <img class="slide" src="Assets/optimized/networthtracker3beta.jpg" width="1600" height="873" alt="Net worth tracker beta screenshot showing a third feature" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="build-copy">
+            <p class="build-kicker"><span class="build-num">03</span> Now · Beta</p>
+            <h3 class="build-title" id="build-3">Networth Tracker</h3>
+            <p class="build-desc">
+              A beta finance dashboard for tracking assets and net worth over
+              time, built with Next.js, React, PostgreSQL, and Massive API data
+              integrations.
+            </p>
+            <ul class="chips" aria-label="Networth Tracker tech stack">
+              <li>Next.js</li>
+              <li>React</li>
+              <li>PostgreSQL</li>
+              <li>Massive API</li>
+            </ul>
+            <p class="build-note">Private beta, so no public link yet.</p>
+          </div>
+        </article>
+
+        <p class="group-label" data-node>
+          <span class="group-dot" aria-hidden="true"></span> Where it started
+        </p>
+
+        <article class="build is-flip" data-node data-ports="3" aria-labelledby="build-4">
+          <div class="build-media">
+            <div class="frame" data-carousel>
+              <div class="frame-bar">
+                <span class="frame-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="frame-url">graph.fm</span>
+                <div class="slide-dots" aria-label="Graph.fm screenshots">
+                  <button class="slide-dot is-active" type="button" aria-label="Show screenshot 1"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 2"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 3"></button>
+                </div>
+                <span class="frame-status">2025</span>
+              </div>
+              <div class="frame-screen">
+                <img class="slide is-active" src="Assets/optimized/graphfm1.jpg" width="1600" height="872" alt="Graph.fm screenshot showing a genre analysis dashboard" loading="lazy" />
+                <img class="slide" src="Assets/optimized/graphfm2.jpg" width="1600" height="872" alt="Graph.fm screenshot showing another analytics view" loading="lazy" />
+                <img class="slide" src="Assets/optimized/graphfm3.jpg" width="1600" height="873" alt="Graph.fm screenshot showing a third listening analysis screen" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="build-copy">
+            <p class="build-kicker"><span class="build-num">04</span> 2025 · Last.fm analysis</p>
+            <h3 class="build-title" id="build-4">Graph.fm</h3>
+            <p class="build-desc">
+              A Last.fm analysis website that turns listening history into
+              interactive summaries, comparisons, and visual breakdowns using
+              Python, Streamlit, and the Last.fm API.
+            </p>
+            <ul class="chips" aria-label="Graph.fm tech stack">
+              <li>Python</li>
+              <li>Streamlit</li>
+              <li>Last.fm API</li>
+            </ul>
+            <div class="build-actions">
+              <a class="action" href="https://github.com/rileypigneguy/graph.fm" target="_blank" rel="noreferrer">
+                Read the code on GitHub <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="build" data-node data-ports="3" aria-labelledby="build-5">
+          <div class="build-media">
+            <div class="frame is-portrait" data-carousel>
+              <div class="frame-bar">
+                <span class="frame-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="frame-url">discord · #odds</span>
+                <div class="slide-dots" aria-label="Discord bot screenshots">
+                  <button class="slide-dot is-active" type="button" aria-label="Show screenshot 1"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 2"></button>
+                </div>
+                <span class="frame-status">Private</span>
+              </div>
+              <div class="frame-screen">
+                <img class="slide is-active" src="Assets/optimized/discordbot1.jpg" width="1188" height="1430" alt="Discord bot screenshot showing odds output in a Discord channel" loading="lazy" />
+                <img class="slide" src="Assets/optimized/discordbot2.jpg" width="1054" height="936" alt="Discord bot screenshot showing another odds summary" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="build-copy">
+            <p class="build-kicker"><span class="build-num">05</span> 2024–2025 · Automation</p>
+            <h3 class="build-title" id="build-5">Arb + Oddscreener Bot</h3>
+            <p class="build-desc">
+              A Discord bot that pulls sports market data, screens odds across
+              bookmakers, and posts match-ready summaries straight into Discord
+              channels for faster decision making.
+            </p>
+            <ul class="chips" aria-label="Discord bot tech stack">
+              <li>Python</li>
+              <li>Sports API</li>
+              <li>Discord API</li>
+            </ul>
+            <p class="build-note">Private project.</p>
+          </div>
+        </article>
+
+        <article class="build is-flip" data-node data-ports="3" aria-labelledby="build-6">
+          <div class="build-media">
+            <div class="frame" data-carousel>
+              <div class="frame-bar">
+                <span class="frame-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="frame-url">grade-tracker</span>
+                <div class="slide-dots" aria-label="Grade tracker screenshots">
+                  <button class="slide-dot is-active" type="button" aria-label="Show screenshot 1"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 2"></button>
+                  <button class="slide-dot" type="button" aria-label="Show screenshot 3"></button>
+                </div>
+                <span class="frame-status">Group project</span>
+              </div>
+              <div class="frame-screen">
+                <img class="slide is-active" src="Assets/optimized/gradestracker1.jpg" width="1600" height="1000" alt="Grade tracker screenshot showing a grade summary interface" loading="lazy" />
+                <img class="slide" src="Assets/optimized/gradestracker2.jpg" width="1600" height="872" alt="Grade tracker screenshot showing another page" loading="lazy" />
+                <img class="slide" src="Assets/optimized/gradestracker3.jpg" width="1600" height="862" alt="Grade tracker screenshot showing an additional workflow" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="build-copy">
+            <p class="build-kicker"><span class="build-num">06</span> Semester 1, 2025 · CITS3403</p>
+            <h3 class="build-title" id="build-6">Grade Tracker</h3>
+            <p class="build-desc">
+              A university group project for CITS3403 focused on tracking
+              assessment results and semester progress through a classic web
+              app stack with Flask and SQLite.
+            </p>
+            <ul class="chips" aria-label="Grade Tracker tech stack">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Flask</li>
+              <li>SQLite</li>
+            </ul>
+            <div class="build-actions">
+              <a class="action" href="https://github.com/alyshaprompruek/CITS3403_project" target="_blank" rel="noreferrer">
+                Read the code on GitHub <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <p class="hook" data-node data-read>
+          Every build leaves weights behind: the tools that made it work.
+          Here’s how they all <em>connect.</em>
+        </p>
       </section>
 
-      <section class="section" id="contact">
-        <div class="container contact-shell reveal">
-          <div class="contact-header">
-            <p class="section-kicker">Connect portal</p>
-            <h2>Contact</h2>
-          </div>
+      <!-- Layer 3 · Weights -->
+      <section class="chapter" id="weights" data-palette="weights" aria-labelledby="weights-title">
+        <span class="anchor-alias" id="stack" aria-hidden="true"></span>
+        <p class="layer-tag" data-node><span>Layer 3</span> Weights</p>
+        <h2 class="story" id="weights-title" data-node data-read>
+          29 tools. 6 builds. <em>One network.</em>
+        </h2>
 
-          <div class="contact-grid">
-            <div class="contact-card">
-              <span class="panel-label">Email</span>
-              <a class="contact-link" href="mailto:riley.pigneguy@gmail.com"
-                >riley.pigneguy@gmail.com</a
-              >
-            </div>
-
-            <div class="contact-card">
-              <span class="panel-label">GitHub</span>
-              <a class="contact-link" href="https://github.com/rileypigneguy" target="_blank" rel="noreferrer"
-                >github.com/rileypigneguy</a
-              >
-            </div>
-
-            <div class="contact-card">
-              <span class="panel-label">Location</span>
-              <p class="contact-link static-text">Perth, Australia</p>
-            </div>
+        <div class="graph-panel" data-node data-ports="4">
+          <svg
+            class="graph"
+            role="img"
+            aria-label="An interactive network linking 29 tools to the six builds, UWA, and the Uplyft and CMCA internships they came from. The same information is listed below."
+          ></svg>
+          <div class="graph-foot">
+            <p class="graph-hint">Hover or tap any node to trace it · drag to rearrange</p>
+            <p class="graph-caption" aria-live="polite">Everything connects back to one person.</p>
           </div>
         </div>
+
+        <div class="toolkit" data-node data-ports="3">
+          <div class="toolkit-group">
+            <h3><span>01</span> Core stack</h3>
+            <ul class="chips">
+              <li>Python</li>
+              <li>Next.js</li>
+              <li>React</li>
+              <li>JavaScript</li>
+              <li>HTML + CSS</li>
+              <li>Streamlit</li>
+              <li>Flask</li>
+              <li>PostgreSQL</li>
+              <li>SQLite</li>
+            </ul>
+          </div>
+          <div class="toolkit-group">
+            <h3><span>02</span> Infra + tooling</h3>
+            <ul class="chips">
+              <li>GitHub</li>
+              <li>Neon DB</li>
+              <li>Vercel</li>
+              <li>Cloudflare</li>
+              <li>Vite</li>
+              <li>Stripe</li>
+              <li>Replit</li>
+              <li>Resend</li>
+              <li>Last.fm API</li>
+              <li>Sports API</li>
+              <li>Discord API</li>
+              <li>Massive API</li>
+              <li>GitBook workflows</li>
+            </ul>
+          </div>
+          <div class="toolkit-group">
+            <h3><span>03</span> University foundations</h3>
+            <p>
+              Learned through university and still part of my technical base,
+              even where they have not yet featured in my shipped projects.
+            </p>
+            <ul class="chips">
+              <li>Java</li>
+              <li>C</li>
+            </ul>
+          </div>
+          <div class="toolkit-group">
+            <h3><span>04</span> Workplace + security</h3>
+            <p>From the Uplyft internship: automation, Microsoft 365, and the frameworks behind a security review.</p>
+            <ul class="chips">
+              <li>Power Automate</li>
+              <li>Microsoft Forms</li>
+              <li>SharePoint</li>
+              <li>Microsoft 365</li>
+              <li>Essential Eight</li>
+              <li>NIST CSF 2.0</li>
+              <li>ISO 27001</li>
+              <li>SMB1001</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="hook" data-node data-read>
+          You’ve watched the signal long enough. Your turn to <em>shape one.</em>
+        </p>
+      </section>
+
+      <!-- Layer 4 · Your turn -->
+      <section class="chapter" id="lab" data-palette="lab" aria-labelledby="lab-title">
+        <p class="layer-tag" data-node><span>Layer 4</span> Your turn</p>
+        <h2 class="story" id="lab-title" data-node data-read>
+          A tiny neural network, running live in your browser.
+          <em>Teach it something.</em>
+        </h2>
+
+        <div class="lab" data-node data-ports="3">
+          <div class="lab-screen">
+            <canvas class="lab-canvas" aria-label="Neural network playground. Click or tap to add a training point; the coloured field shows what the network currently predicts."></canvas>
+            <p class="lab-hint" aria-hidden="true">Click anywhere to drop a point</p>
+            <noscript><p class="lab-noscript">Turn on JavaScript to train the network.</p></noscript>
+          </div>
+          <div class="lab-side">
+            <p class="lab-label">Architecture</p>
+            <p class="lab-arch" aria-label="2 inputs, two hidden layers of 10 neurons, 1 output">
+              <span>2</span><i aria-hidden="true">→</i><span>10</span><i aria-hidden="true">→</i><span>10</span><i aria-hidden="true">→</i><span>1</span>
+            </p>
+            <p class="lab-note">
+              Two inputs (the x and y of each point), two hidden layers of ten
+              tanh neurons, and one sigmoid output. It retrains with Adam every
+              frame you watch.
+            </p>
+            <p class="lab-label">Paint with</p>
+            <div class="lab-toggle" role="group" aria-label="Point colour">
+              <button class="swatch is-a" type="button" data-class="0" aria-pressed="true">Teal</button>
+              <button class="swatch is-b" type="button" data-class="1" aria-pressed="false">Amber</button>
+            </div>
+            <div class="lab-actions">
+              <button type="button" data-lab="pattern">New pattern</button>
+              <button type="button" data-lab="reset">Reset weights</button>
+              <button type="button" data-lab="clear">Clear points</button>
+            </div>
+            <dl class="lab-stats">
+              <div><dt>Epoch</dt><dd data-stat="epoch">0</dd></div>
+              <div><dt>Loss</dt><dd data-stat="loss">–</dd></div>
+              <div><dt>Accuracy</dt><dd data-stat="acc">–</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <p class="hook" data-node data-read>
+          Every network ends in an output. This one has a <em>single node</em>
+          left.
+        </p>
+      </section>
+
+      <!-- Layer 5 · Output -->
+      <section class="chapter chapter-output" id="output" data-palette="output" aria-labelledby="output-title">
+        <span class="anchor-alias" id="contact" aria-hidden="true"></span>
+        <p class="layer-tag" data-node><span>Layer 5</span> Output</p>
+        <h2 class="story story-xl" id="output-title" data-node data-read>
+          One node left. <em>It’s you.</em>
+        </h2>
+
+        <div class="output-node" data-node data-ports="1">
+          <span class="output-rings" aria-hidden="true"><i></i><i></i><i></i></span>
+          <p class="output-line">
+            Let’s build something that makes it out into the world.
+          </p>
+          <div class="contact-actions">
+            <!-- Messages go through the contact Worker (see contact-worker/), which sends
+                 them with Resend. Without data-endpoint, sending opens the visitor's email app. -->
+            <form class="signal-form" data-endpoint="https://riley-portfolio-contact.soundsculptor-riley.workers.dev/" novalidate>
+              <label class="signal-label" for="signal-message">Send a message from right here</label>
+              <textarea
+                class="signal-input signal-message"
+                id="signal-message"
+                name="message"
+                rows="3"
+                maxlength="5000"
+                required
+                placeholder="Say hello, pitch an idea, or ask about a build…"
+              ></textarea>
+              <div class="signal-row">
+                <label class="visually-hidden" for="signal-name">Your name</label>
+                <input
+                  class="signal-input"
+                  id="signal-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  maxlength="100"
+                  placeholder="Your name"
+                />
+                <label class="visually-hidden" for="signal-email">Your email</label>
+                <input
+                  class="signal-input"
+                  id="signal-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  maxlength="320"
+                  required
+                  placeholder="Your email, so I can reply"
+                />
+                <button class="signal-send" type="submit">
+                  <span class="signal-send-label">Send</span> <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+              <!-- Left empty by people; bots fill it in. -->
+              <input class="signal-trap" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <p class="signal-status" role="status" aria-live="polite"></p>
+            </form>
+            <div class="contact-alt">
+              <button class="contact-email" type="button" data-copy="riley.pigneguy@gmail.com">
+                <span class="contact-email-value">riley.pigneguy@gmail.com</span>
+                <span class="contact-email-hint" data-copy-hint>Copy</span>
+              </button>
+              <a class="action" href="https://github.com/rileypigneguy" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <p class="output-time">It’s <time data-perth-time>evening</time> in Perth right now.</p>
+        </div>
+
+        <p class="journey-stats" data-node data-stats>
+          You followed the signal all the way to the output layer. Thanks for
+          reading.
+        </p>
+
+        <footer class="site-footer">
+          <p>© <span id="current-year">2026</span> Riley Pigneguy</p>
+          <a class="replay" href="#top">Send the signal again <span aria-hidden="true">↺</span></a>
+        </footer>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>© <span id="current-year">2026</span> Riley Pigneguy</p>
-      </div>
-    </footer>
   </body>
 </html>

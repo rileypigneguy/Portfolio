@@ -1,2 +1,7 @@
 .DS_Store
 **/.DS_Store
+
+# Cloudflare Wrangler: local cache and any local secrets
+.wrangler/
+.dev.vars*
+node_modules/
