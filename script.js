@@ -806,7 +806,8 @@ const setupIntro = () => {
     show(beats[1], smoothstep(0.28, 0.4, p));
     const out1 = smoothstep(0.55, 0.62, p);
     place(beats[1].el, 1 - out1, -out1 * 40);
-    show(beats[2], smoothstep(0.62, 0.74, p));
+    const nameReveal = smoothstep(0.62, 0.74, p);
+    place(beats[2].el, nameReveal, (1 - nameReveal) * 24);
     neuron.style.setProperty("--charge", p.toFixed(3));
     neuron.style.setProperty("--axon", smoothstep(0.8, 1, p).toFixed(3));
     writeStyle(cue, "opacity", (smoothstep(0.7, 1, opening) * (1 - smoothstep(0.01, 0.07, p))).toFixed(3));

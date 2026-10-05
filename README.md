@@ -14,8 +14,8 @@ There is no build step, framework, or dependency.
 The page is told as a neural network's forward pass, and the reader is the
 signal travelling through it:
 
-1. **Cold open**: Riley's name and introduction appear immediately, followed by
-   two story beats as you scroll (including the live time in Perth)
+1. **Cold open**: the intercepted signal, the live time in Perth, then Riley's
+   name and introduction appear as you scroll
 2. **Layer 0 · Input**: who I am, plus a working terminal you can type into
 3. **Layer 1 · Hidden**: three years at UWA as three training epochs
 4. **Layer 2 · Activations**: the six builds, including a live, scrollable

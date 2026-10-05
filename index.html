@@ -139,12 +139,17 @@
     </nav>
 
     <main class="story-root">
-      <!-- The profile is visible immediately; the signal story follows on scroll. -->
+      <!-- Cold open: the intercepted signal, its origin, then the profile. -->
       <section class="intro" id="top" data-palette="intro" aria-label="Introduction">
         <span class="anchor-alias" id="hero" aria-hidden="true"></span>
         <div class="intro-stage">
           <div class="intro-beats">
-            <div class="beat beat-name" data-beat="0">
+            <p class="beat" data-beat="0">Hi. You’ve just intercepted a <em>signal.</em></p>
+            <p class="beat" data-beat="1">
+              It’s coming from Perth, Western Australia, where it’s
+              <time data-perth-time>evening</time> right now.
+            </p>
+            <div class="beat beat-name" data-beat="2">
               <h1 class="name">
                 <span class="name-first">Riley</span>
                 <span class="name-last">Pigneguy</span>
@@ -154,11 +159,6 @@
                 at the University of Western Australia.
               </p>
             </div>
-            <p class="beat" data-beat="1">Hi. You’ve just intercepted a <em>signal.</em></p>
-            <p class="beat" data-beat="2">
-              It’s coming from Perth, Western Australia, where it’s
-              <time data-perth-time>evening</time> right now.
-            </p>
           </div>
           <div class="neuron" aria-hidden="true">
             <span class="neuron-axon"></span>
