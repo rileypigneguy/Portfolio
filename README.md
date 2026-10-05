@@ -1,4 +1,10 @@
-# Portfolio site
+# Riley Pigneguy Portfolio
+
+[View Riley Pigneguy's portfolio](https://rileypigneguy.github.io/Portfolio/)
+
+Software developer in Perth and Artificial Intelligence student at the
+University of Western Australia. The portfolio includes six software projects,
+education and internship experience.
 
 This is a static portfolio website built with plain HTML, CSS, and JavaScript.
 There is no build step, framework, or dependency.
@@ -8,8 +14,8 @@ There is no build step, framework, or dependency.
 The page is told as a neural network's forward pass, and the reader is the
 signal travelling through it:
 
-1. **Cold open**: a single neuron, three lines that write themselves as you
-   scroll (including the live time in Perth), then the neuron fires into the page
+1. **Cold open**: Riley's name and introduction appear immediately, followed by
+   two story beats as you scroll (including the live time in Perth)
 2. **Layer 0 · Input**: who I am, plus a working terminal you can type into
 3. **Layer 1 · Hidden**: three years at UWA as three training epochs
 4. **Layer 2 · Activations**: the six builds, including a live, scrollable
@@ -98,3 +104,45 @@ visitor's email app with the message filled in.
   visible, nothing pins or animates.
 - The live preview only works for michaelpigneguy.com; thesoundsculptor.com.au
   blocks being embedded, so it shows screenshots instead.
+
+## Search indexing
+
+The production URL is `https://rileypigneguy.github.io/Portfolio/`. The canonical
+URL, social metadata, structured data and sitemap use this exact address. If
+the site moves to a custom domain, update all of them together.
+
+After committing and pushing changes, wait for the GitHub Pages deployment to
+finish, then:
+
+1. Add the **URL prefix** property `https://rileypigneguy.github.io/Portfolio/`
+   in [Google Search Console](https://search.google.com/search-console).
+2. Verify ownership using Google's HTML file or HTML meta tag. For the file
+   method, put Google's exact downloaded file in the repository root and push
+   it. For the tag method, put Google's exact tag in the `index.html` head and
+   push it. Keep the verification file or tag after verification succeeds.
+3. In **Sitemaps**, submit
+   `https://rileypigneguy.github.io/Portfolio/sitemap.xml`.
+4. Inspect `https://rileypigneguy.github.io/Portfolio/` with **URL Inspection**.
+   Use **Test live URL**, check the rendered page, then **Request indexing**.
+   If excluded, use the reported reason and Google's selected canonical to
+   diagnose it instead of repeatedly submitting the URL.
+5. Add the portfolio link to your GitHub profile and any other public profiles
+   you use, so people and crawlers can discover it.
+
+GitHub project Pages serves this repo's `robots.txt` at `/Portfolio/robots.txt`.
+Search engines only use `https://rileypigneguy.github.io/robots.txt`; the nested
+file does not control crawling or advertise the sitemap. The origin-root URL
+returned 404 when checked on 2026-10-04, which does **not** block crawling.
+Submit the sitemap directly in Search Console. If you manage the separate
+`rileypigneguy.github.io` root-site repository, its root `robots.txt` can also
+point to this project's sitemap.
+
+The site includes `ProfilePage`, `Person` and `WebSite` structured data, and a
+1200 x 630 social preview in `Assets/social-preview.png` (editable source:
+`Assets/social-preview.svg`). Social tags control link previews; they do not
+guarantee search rankings. The page remains readable with JavaScript disabled.
+Update the sitemap's `lastmod` only when page content actually changes.
+
+Google may take days to weeks to recrawl a page, and indexing is not guaranteed.
+References: [request a recrawl](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl)
+and [robots.txt location](https://developers.google.com/crawling/docs/robots-txt/create-robots-txt).

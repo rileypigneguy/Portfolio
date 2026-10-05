@@ -2,7 +2,9 @@
    The reader's scroll position is the signal. Everything it passes lights up. */
 
 const root = document.documentElement;
-const live = root.classList.contains("is-live");
+const live = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+// Keep the HTML readable if the animation script is blocked or unavailable.
+root.classList.add("js", live ? "is-live" : "is-still");
 const finePointer = window.matchMedia("(pointer: fine)").matches;
 
 // Where the signal sits, as a fraction of the viewport height.
@@ -759,7 +761,7 @@ const setupIntro = () => {
   }
   const beats = [...intro.querySelectorAll("[data-beat]")].map((el) => ({
     el,
-    words: splitWords(el),
+    words: el.classList.contains("beat-name") ? [] : splitWords(el),
     shown: -1,
   }));
   const neuron = intro.querySelector(".neuron");
@@ -793,6 +795,9 @@ const setupIntro = () => {
 
   // Three beats replace each other while the stage is pinned, then the neuron fires.
   const update = (y, now) => {
+    if (!live) {
+      return 1;
+    }
     const p = clamp((y - top) / range);
     const opening = clamp((now - start - 350) / 1100);
     show(beats[0], opening);

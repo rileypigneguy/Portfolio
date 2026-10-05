@@ -136,8 +136,7 @@ button {
 
 .js .beat em,
 .js .story em,
-.js .hook em,
-.js .name-last {
+.js .hook em {
   background: none;
   color: inherit;
 }

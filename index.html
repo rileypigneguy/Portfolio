@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,44 +7,46 @@
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta
       name="description"
-      content="Portfolio site for Riley Pigneguy, a UWA Advanced Computer Science student majoring in Artificial Intelligence and building practical software with Python, Next.js, React, APIs, and databases."
+      content="Riley Pigneguy is a software developer in Perth and an Artificial Intelligence student at UWA. Explore web projects, Python tools and internship experience."
     />
-    <title>Riley Pigneguy | Artificial Intelligence Portfolio</title>
+    <meta name="author" content="Riley Pigneguy" />
+    <title>Riley Pigneguy | Software Developer &amp; AI Student in Perth</title>
     <link rel="canonical" href="https://rileypigneguy.github.io/Portfolio/" />
+    <link rel="sitemap" type="application/xml" href="sitemap.xml" />
     <link rel="icon" href="favicon.ico" sizes="32x32" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="Riley Pigneguy | Artificial Intelligence Portfolio"
+      content="Riley Pigneguy | Software Developer &amp; AI Student in Perth"
     />
     <meta
       property="og:description"
-      content="Portfolio site for Riley Pigneguy, a UWA Advanced Computer Science student majoring in Artificial Intelligence and building practical software with Python, Next.js, React, APIs, and databases."
+      content="Riley Pigneguy is a software developer in Perth and an Artificial Intelligence student at UWA. Explore web projects, Python tools and internship experience."
     />
     <meta
       property="og:url"
       content="https://rileypigneguy.github.io/Portfolio/"
     />
     <meta property="og:site_name" content="Riley Pigneguy Portfolio" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:locale" content="en_AU" />
+    <meta property="og:image" content="https://rileypigneguy.github.io/Portfolio/Assets/social-preview.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Riley Pigneguy, software developer in Perth and Artificial Intelligence student at UWA" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Riley Pigneguy | Artificial Intelligence Portfolio"
+      content="Riley Pigneguy | Software Developer &amp; AI Student in Perth"
     />
     <meta
       name="twitter:description"
-      content="UWA Advanced Computer Science student majoring in Artificial Intelligence and building practical software."
+      content="Riley Pigneguy is a software developer in Perth and an Artificial Intelligence student at UWA. Explore web projects, Python tools and internship experience."
     />
-    <script>
-      // Pick the experience before first paint: the live story, or a still one for reduced motion.
-      (function () {
-        var root = document.documentElement;
-        var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        root.classList.add("js", still ? "is-still" : "is-live");
-      })();
-    </script>
+    <meta name="twitter:image" content="https://rileypigneguy.github.io/Portfolio/Assets/social-preview.png" />
+    <meta name="twitter:image:alt" content="Riley Pigneguy, software developer in Perth and Artificial Intelligence student at UWA" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -55,27 +57,47 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Riley Pigneguy",
-        "url": "https://rileypigneguy.github.io/Portfolio/",
-        "jobTitle": "Artificial Intelligence student and software developer",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Perth",
-          "addressCountry": "AU"
-        },
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "The University of Western Australia"
-        },
-        "sameAs": ["https://github.com/rileypigneguy"],
-        "knowsAbout": [
-          "Artificial Intelligence",
-          "Python",
-          "Next.js",
-          "React",
-          "PostgreSQL",
-          "APIs"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://rileypigneguy.github.io/Portfolio/#website",
+            "url": "https://rileypigneguy.github.io/Portfolio/",
+            "name": "Riley Pigneguy Portfolio",
+            "inLanguage": "en-AU",
+            "publisher": { "@id": "https://rileypigneguy.github.io/Portfolio/#person" }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://rileypigneguy.github.io/Portfolio/#profile",
+            "url": "https://rileypigneguy.github.io/Portfolio/",
+            "name": "Riley Pigneguy | Software Developer & AI Student in Perth",
+            "description": "Software projects, education and internship experience of Riley Pigneguy, a software developer in Perth and Artificial Intelligence student at UWA.",
+            "inLanguage": "en-AU",
+            "isPartOf": { "@id": "https://rileypigneguy.github.io/Portfolio/#website" },
+            "mainEntity": { "@id": "https://rileypigneguy.github.io/Portfolio/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://rileypigneguy.github.io/Portfolio/#person",
+            "name": "Riley Pigneguy",
+            "url": "https://rileypigneguy.github.io/Portfolio/",
+            "description": "Software developer in Perth and Bachelor of Advanced Computer Science (Honours) student at UWA, majoring in Artificial Intelligence.",
+            "mainEntityOfPage": { "@id": "https://rileypigneguy.github.io/Portfolio/#profile" },
+            "homeLocation": {
+              "@type": "Place",
+              "name": "Perth, Western Australia, Australia"
+            },
+            "affiliation": {
+              "@type": "CollegeOrUniversity",
+              "name": "The University of Western Australia",
+              "url": "https://www.uwa.edu.au/"
+            },
+            "sameAs": ["https://github.com/rileypigneguy"],
+            "knowsAbout": [
+              "Artificial Intelligence", "Software development", "Python",
+              "Next.js", "React", "PostgreSQL", "APIs"
+            ]
+          }
         ]
       }
     </script>
@@ -117,26 +139,26 @@
     </nav>
 
     <main class="story-root">
-      <!-- Cold open: one neuron, three lines, then the signal fires into the page. -->
+      <!-- The profile is visible immediately; the signal story follows on scroll. -->
       <section class="intro" id="top" data-palette="intro" aria-label="Introduction">
         <span class="anchor-alias" id="hero" aria-hidden="true"></span>
         <div class="intro-stage">
           <div class="intro-beats">
-            <p class="beat" data-beat="0">Hi. You’ve just intercepted a <em>signal.</em></p>
-            <p class="beat" data-beat="1">
-              It’s coming from Perth, Western Australia, where it’s
-              <time data-perth-time>evening</time> right now.
-            </p>
-            <div class="beat beat-name" data-beat="2">
+            <div class="beat beat-name" data-beat="0">
               <h1 class="name">
                 <span class="name-first">Riley</span>
                 <span class="name-last">Pigneguy</span>
               </h1>
               <p class="name-sub">
-                AI student at UWA. I build software that makes it out into the
-                world.
+                Software developer in Perth. Artificial Intelligence student
+                at the University of Western Australia.
               </p>
             </div>
+            <p class="beat" data-beat="1">Hi. You’ve just intercepted a <em>signal.</em></p>
+            <p class="beat" data-beat="2">
+              It’s coming from Perth, Western Australia, where it’s
+              <time data-perth-time>evening</time> right now.
+            </p>
           </div>
           <div class="neuron" aria-hidden="true">
             <span class="neuron-axon"></span>
@@ -166,7 +188,7 @@
           </li>
           <li class="input">
             <span class="input-key">University</span>
-            <span class="input-value">UWA, since 2024</span>
+            <span class="input-value">The University of Western Australia, since 2024</span>
           </li>
           <li class="input">
             <span class="input-key">Degree</span>
