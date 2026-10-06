@@ -138,8 +138,8 @@ Submit the sitemap directly in Search Console. If you manage the separate
 point to this project's sitemap.
 
 The site includes `ProfilePage`, `Person` and `WebSite` structured data, and a
-1200 x 630 social preview in `Assets/social-preview.png` (editable source:
-`Assets/social-preview.svg`). Social tags control link previews; they do not
+1280 x 720 screenshot preview in `Assets/site-screenshot-preview.jpg`.
+Social tags control link previews; they do not
 guarantee search rankings. The page remains readable with JavaScript disabled.
 Update the sitemap's `lastmod` only when page content actually changes.
 
