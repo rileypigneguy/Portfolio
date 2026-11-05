@@ -1,6 +1,10 @@
-# Riley Pigneguy — Minimal editorial preview
+# Riley Pigneguy Portfolio
 
-A separate design direction on `preview/minimal-editorial`, inspired by monochrome print, file windows, and tactile dot textures. Production stays on `main`.
+The production portfolio on `main`, inspired by monochrome print, file windows, and tactile dot textures.
+
+Live: https://riley-pigneguy-portfolio.vercel.app/
+
+The previous neural-network design is preserved on `archive/neural-network-portfolio`. The original design preview remains on `preview/minimal-editorial`.
 
 Plain HTML, CSS and JavaScript. No frontend build step or dependencies. Run `python3 -m http.server 4173` for a static local preview; deploy to Vercel for `/api/contact`.
 
@@ -8,7 +12,7 @@ The six projects retain their descriptions, technology lists, screenshot galleri
 
 `api/contact.mjs` forwards to the existing Cloudflare email Worker. The Resend key remains in Cloudflare. Accepted form origins are production and the exact Vercel deployment/branch hostnames supplied by the runtime.
 
-Preview pages are noindex. The production canonical and Google verification file are preserved. Motion respects reduced-motion preferences; content is readable without JavaScript.
+Production is indexable. The production canonical, sitemap, and Google verification file are preserved. Motion respects reduced-motion preferences; content is readable without JavaScript.
 
 Screenshot galleries use responsive 640px and 1200px WebP files in
 `Assets/previews/`. Filenames include a content hash so Vercel and the browser
