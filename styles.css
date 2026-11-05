@@ -290,10 +290,6 @@ p + p {
   font-weight: bold;
   margin-left: 5px;
 }
-.hero-foot-note {
-  font-size: 9px;
-  letter-spacing: 0.3px;
-}
 .artwork {
   height: 255px;
   position: relative;
@@ -307,15 +303,44 @@ p + p {
   background: radial-gradient(#777970 0.8px, transparent 1px) 0 0/6px 6px;
   mask-image: radial-gradient(ellipse, #0007, transparent 70%);
 }
-.orb {
-  width: 245px;
-  height: 245px;
-  animation: orbit 45s linear infinite;
-  transform-origin: center;
-  transition: scale 0.8s var(--ease);
+.network-sketch {
+  width: 280px;
+  height: 240px;
+  overflow: visible;
 }
-.artwork:hover .orb {
-  scale: 1.05;
+.network-labels {
+  font: 7px var(--mono);
+  letter-spacing: 0.6px;
+  text-anchor: middle;
+  fill: var(--muted);
+}
+.network-edges {
+  stroke: var(--ink);
+  stroke-width: 0.8;
+  opacity: 0.22;
+}
+.network-signal {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  stroke-dasharray: 18 260;
+  animation: network-flow 6s linear infinite;
+}
+.network-nodes {
+  fill: var(--white);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+.network-endpoints {
+  fill: var(--ink);
+}
+@keyframes network-flow {
+  from {
+    stroke-dashoffset: 278;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 .artwork-caption {
   position: absolute;
@@ -325,24 +350,6 @@ p + p {
   text-align: center;
   font-size: 8px;
   letter-spacing: 1px;
-}
-.cross {
-  position: absolute;
-  color: var(--muted);
-  font-size: 16px;
-}
-.cross-one {
-  top: 10px;
-  right: 10px;
-}
-.cross-two {
-  bottom: 30px;
-  left: 10px;
-}
-@keyframes orbit {
-  to {
-    transform: rotate(360deg);
-  }
 }
 .section-heading {
   display: flex;
@@ -394,11 +401,15 @@ p + p {
     filter 0.6s,
     transform 0.9s var(--ease);
 }
-.project:hover .gallery > img,
-.archive-project:hover .gallery > img,
 .gallery:focus-within > img {
   filter: grayscale(0);
   transform: scale(1.015);
+}
+@media (hover: hover) and (pointer: fine) {
+  .gallery:hover > img {
+    filter: grayscale(0);
+    transform: scale(1.015);
+  }
 }
 .gallery-controls {
   position: absolute;
@@ -958,8 +969,8 @@ body.dialog-open {
   .hero-bottom {
     grid-template-columns: 1fr 220px;
   }
-  .orb {
-    width: 210px;
+  .network-sketch {
+    width: 220px;
     height: 210px;
   }
   .artwork {
@@ -970,9 +981,6 @@ body.dialog-open {
   }
   .hero-copy .quiet {
     font-size: 10px;
-  }
-  .hero-foot-note {
-    display: none;
   }
   .about-grid {
     grid-template-columns: 0.85fr 1.2fr;
