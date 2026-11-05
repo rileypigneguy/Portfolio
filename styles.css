@@ -411,6 +411,18 @@ p + p {
     transform: scale(1.015);
   }
 }
+.gallery-status {
+  position: absolute;
+  bottom: 58px;
+  right: 12px;
+  left: 12px;
+  width: fit-content;
+  margin: 0 0 0 auto;
+  padding: 6px 9px;
+  border: 1px solid var(--ink);
+  background: var(--white);
+  font-size: 10px;
+}
 .gallery-controls {
   position: absolute;
   bottom: 12px;

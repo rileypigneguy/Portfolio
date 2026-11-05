@@ -44,21 +44,106 @@ if ("IntersectionObserver" in window) {
     .forEach((el) => observer.observe(el));
 }
 
-// Screenshots remain local and load only when needed.
+// Fetch and decode each project's screenshots before the visitor selects them.
+// Observe the project wrapper because closed <details> hide the gallery itself.
+const decodedSources = new WeakMap();
+const imageLoads = new WeakMap();
+const galleryPreloads = new WeakMap();
+function prepareScreenshot(image) {
+  if (
+    image.complete &&
+    image.naturalWidth &&
+    decodedSources.get(image) === image.currentSrc
+  )
+    return Promise.resolve();
+  if (!imageLoads.has(image)) {
+    image.loading = "eager";
+    const ready = image
+      .decode()
+      .then(() => {
+        decodedSources.set(image, image.currentSrc);
+      })
+      .finally(() => {
+        imageLoads.delete(image);
+      });
+    imageLoads.set(image, ready);
+  }
+  return imageLoads.get(image);
+}
+const galleryObserver =
+  "IntersectionObserver" in window
+    ? new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            galleryPreloads.get(entry.target)();
+            galleryObserver.unobserve(entry.target);
+          });
+        },
+        { rootMargin: "600px 0px" },
+      )
+    : null;
+
 document.querySelectorAll("[data-gallery]").forEach((gallery) => {
   const images = [...gallery.querySelectorAll("img")];
   const buttons = [...gallery.querySelectorAll("[data-slide]")];
+  const project = gallery.closest(".project, .archive-project");
+  const status = document.createElement("p");
+  status.className = "gallery-status";
+  status.setAttribute("role", "status");
+  status.hidden = true;
+  gallery.append(status);
+  let selection = 0;
+  let loadingNotice;
+
+  const preload = () =>
+    images.forEach((image) => {
+      image.fetchPriority = image.hidden ? "low" : "auto";
+      prepareScreenshot(image).catch(() => {});
+    });
+  galleryPreloads.set(project, preload);
+  if (galleryObserver) galleryObserver.observe(project);
+  else preload();
+  project.addEventListener("pointerenter", preload, { once: true });
+  project.addEventListener("focusin", preload, { once: true });
+
   buttons.forEach((button) =>
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
+      const request = ++selection;
       const selected = Number(button.dataset.slide);
-      images.forEach((image, index) => (image.hidden = index !== selected));
-      buttons.forEach((item, index) =>
-        item.setAttribute("aria-pressed", String(index === selected)),
-      );
-      if (!motion.matches)
-        images[selected].animate([{ opacity: 0.35 }, { opacity: 1 }], {
-          duration: 300,
+      clearTimeout(loadingNotice);
+      status.hidden = true;
+      gallery.setAttribute("aria-busy", "true");
+      loadingNotice = setTimeout(() => {
+        status.textContent = "Loading screenshot…";
+        status.hidden = false;
+      }, 150);
+      try {
+        // Keep the previous screenshot visible until the new one is decoded.
+        // The selection guard prevents a slower earlier click replacing a newer one.
+        await prepareScreenshot(images[selected]);
+        if (request !== selection) return;
+        images.forEach((image, index) => {
+          image.hidden = index !== selected;
         });
+        buttons.forEach((item, index) => {
+          item.setAttribute("aria-pressed", String(index === selected));
+        });
+        status.hidden = true;
+        if (!motion.matches)
+          images[selected].animate([{ opacity: 0.8 }, { opacity: 1 }], {
+            duration: 140,
+          });
+      } catch {
+        if (request !== selection) return;
+        status.textContent = "Couldn’t load this screenshot. Try again.";
+        status.hidden = false;
+      } finally {
+        if (request === selection) {
+          clearTimeout(loadingNotice);
+          gallery.setAttribute("aria-busy", "false");
+        }
+      }
     }),
   );
 });
