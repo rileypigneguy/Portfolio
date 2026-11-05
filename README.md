@@ -1,13 +1,14 @@
 # Riley Pigneguy Portfolio
 
-[View Riley Pigneguy's portfolio](https://rileypigneguy.github.io/Portfolio/)
+[View Riley Pigneguy's portfolio](https://riley-pigneguy-portfolio.vercel.app/)
 
 Software developer in Perth and Artificial Intelligence student at the
 University of Western Australia. The portfolio includes six software projects,
 education and internship experience.
 
 This is a static portfolio website built with plain HTML, CSS, and JavaScript.
-There is no build step, framework, or dependency.
+There is no frontend build step, framework, or dependency. Vercel serves the
+static files and runs a small Node.js contact endpoint.
 
 ## The idea
 
@@ -70,11 +71,29 @@ To stop the server, press `Ctrl + C`.
 - **Neural network**: layer sizes are set in `createNetwork([2, 10, 10, 1])`;
   starting datasets are in `PATTERNS`.
 
+## Hosting
+
+Production: https://riley-pigneguy-portfolio.vercel.app/
+
+Vercel project: `riley-pigneguy-portfolio`, in Riley's projects.
+GitHub remains the source repository. The one-time `Retire GitHub Pages`
+workflow verifies the Vercel site before unpublishing GitHub Pages. It can
+also be run manually from the Actions tab.
+
+Deploy the repository with Framework Preset **Other**, no build command, and
+no output directory override. Connect `rileypigneguy/Portfolio` in the Vercel
+project's Git settings to enable automatic deployments from `main`; Vercel's
+GitHub integration must have access to this repository.
+
 ## Contact form
 
-The site stays on GitHub Pages, which can only serve files. Sending email needs
-a secret Resend API key, which must never be in the page, so a small Cloudflare
-Worker in `contact-worker/` receives each message and sends it through Resend.
+The site is hosted on Vercel. The form posts to `/api/contact`, a Vercel
+Function that forwards messages to the existing Cloudflare email Worker. The
+Worker keeps the Resend API key and sends the email; no secret is exposed to
+the browser. The proxy retains the origin accepted by the existing Worker so
+the hosting move does not require rotating or copying the email secret.
+
+The Worker source remains in `contact-worker/`. To update it:
 
 To deploy it (from the `contact-worker/` folder):
 
@@ -86,9 +105,8 @@ npx wrangler deploy
 npx wrangler secret put RESEND_API_KEY
 ```
 
-The first command prints the Worker's URL. Put that URL in the form's
-`data-endpoint` attribute in `index.html`. Until then, pressing Send opens the
-visitor's email app with the message filled in.
+If the Worker's URL changes, update `WORKER_URL` in `api/contact.mjs`.
+The form's `data-endpoint` stays `/api/contact`.
 
 - Messages go to `RESEND_TO_EMAIL` and come from `RESEND_FROM_EMAIL` (both in
   `contact-worker/wrangler.jsonc`), with reply-to set to the visitor's email.
@@ -107,35 +125,29 @@ visitor's email app with the message filled in.
 
 ## Search indexing
 
-The production URL is `https://rileypigneguy.github.io/Portfolio/`. The canonical
+The production URL is `https://riley-pigneguy-portfolio.vercel.app/`. The canonical
 URL, social metadata, structured data and sitemap use this exact address. If
 the site moves to a custom domain, update all of them together.
 
-After committing and pushing changes, wait for the GitHub Pages deployment to
-finish, then:
+After deploying the updated site to Vercel:
 
-1. Add the **URL prefix** property `https://rileypigneguy.github.io/Portfolio/`
+1. Add the **URL prefix** property `https://riley-pigneguy-portfolio.vercel.app/`
    in [Google Search Console](https://search.google.com/search-console).
 2. Verify ownership using Google's HTML file or HTML meta tag. For the file
    method, put Google's exact downloaded file in the repository root and push
    it. For the tag method, put Google's exact tag in the `index.html` head and
    push it. Keep the verification file or tag after verification succeeds.
 3. In **Sitemaps**, submit
-   `https://rileypigneguy.github.io/Portfolio/sitemap.xml`.
-4. Inspect `https://rileypigneguy.github.io/Portfolio/` with **URL Inspection**.
+   `https://riley-pigneguy-portfolio.vercel.app/sitemap.xml`.
+4. Inspect `https://riley-pigneguy-portfolio.vercel.app/` with **URL Inspection**.
    Use **Test live URL**, check the rendered page, then **Request indexing**.
    If excluded, use the reported reason and Google's selected canonical to
    diagnose it instead of repeatedly submitting the URL.
 5. Add the portfolio link to your GitHub profile and any other public profiles
    you use, so people and crawlers can discover it.
 
-GitHub project Pages serves this repo's `robots.txt` at `/Portfolio/robots.txt`.
-Search engines only use `https://rileypigneguy.github.io/robots.txt`; the nested
-file does not control crawling or advertise the sitemap. The origin-root URL
-returned 404 when checked on 2026-10-04, which does **not** block crawling.
-Submit the sitemap directly in Search Console. If you manage the separate
-`rileypigneguy.github.io` root-site repository, its root `robots.txt` can also
-point to this project's sitemap.
+Vercel serves `robots.txt` at the origin root, where crawlers can read its
+crawl rules and sitemap URL.
 
 The site includes `ProfilePage`, `Person` and `WebSite` structured data, and a
 1280 x 720 screenshot preview in `Assets/site-screenshot-preview.jpg`.

@@ -5,3 +5,7 @@
 .wrangler/
 .dev.vars*
 node_modules/
+
+# Vercel local project settings and environment files
+.vercel/
+.env*.local

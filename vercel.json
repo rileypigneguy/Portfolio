@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "redirects": [
+    { "source": "/Portfolio", "destination": "/", "permanent": true },
+    { "source": "/Portfolio/:path*", "destination": "/:path*", "permanent": true }
+  ]
+}

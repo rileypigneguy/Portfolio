@@ -1,0 +1,30 @@
+name: Retire GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/retire-github-pages.yml]
+
+permissions:
+  pages: write
+
+jobs:
+  unpublish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify Vercel before unpublishing GitHub Pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error https://riley-pigneguy-portfolio.vercel.app/ > /tmp/portfolio.html
+          grep -q 'Riley Pigneguy' /tmp/portfolio.html
+      - name: Unpublish GitHub Pages
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          gh api --method DELETE "repos/$REPOSITORY/pages"
+          echo "GitHub Pages unpublished. Production: https://riley-pigneguy-portfolio.vercel.app/" >> "$GITHUB_STEP_SUMMARY"
