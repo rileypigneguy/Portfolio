@@ -1087,7 +1087,7 @@ body.dialog-open {
     padding: 26px 23px 22px;
   }
   .hero h1 {
-    font-size: clamp(40px, 10.8vw, 70px);
+    font-size: clamp(32px, 10.2vw, 66px);
     margin-top: 25px;
     letter-spacing: -0.072em;
   }
